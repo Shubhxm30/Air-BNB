@@ -6,11 +6,14 @@ const MongoURL = 'mongodb://127.0.0.1:27017/wanderlust';
 const listing = require ('./models/listing.js');
 const data = require('./init/data.js');
 const methodOverride = require('method-override');
+const ejsMate = require("ejs-mate");
 
 app.set("views", path. join (__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({extended : true}));
 app.use(methodOverride("_method"));
+app.engine("ejs",ejsMate);
+app.use(express.static(path.join(__dirname, "public")));
 
 main().then(()=>{
     console.log("connection Successful to DataBase");

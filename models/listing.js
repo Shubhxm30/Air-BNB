@@ -6,7 +6,11 @@ const listingSchema = new Schema({
         type : String,
         required : true 
     },
-    description : String,
+    description : {
+        type: String,
+        required: [true, 'Description is required'],
+        minlength: [10, 'Description must be at least 10 characters']
+    },
     image : {
         type : String,
         default : "file:///Users/shubhamvani/Downloads/zhen-yao-6e4P19X8DZs-unsplash.jpg",
